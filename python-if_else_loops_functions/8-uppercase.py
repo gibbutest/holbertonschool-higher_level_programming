@@ -9,5 +9,3 @@ def uppercase(str):
             upper_char = char
         result += upper_char
     print("{}".format(result))
-
-uppercase("wowzers")
