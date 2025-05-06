@@ -2,4 +2,5 @@
 
 import add_0
 
-print(f"1 + 2 = {add_0.add(1, 2)}")
+if __name__ == "__main__":
+    print(f"1 + 2 = {add_0.add(1, 2)}")
