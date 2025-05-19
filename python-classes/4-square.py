@@ -4,6 +4,9 @@
 """
 
 def raiseErrors(size):
+    """
+        Simple function to raise errors
+    """
     if not (isinstance(size, int)):
         raise TypeError('size must be an integer')
     if size < 0:
