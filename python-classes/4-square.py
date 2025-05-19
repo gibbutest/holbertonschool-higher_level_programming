@@ -13,6 +13,7 @@ def raiseErrors(size):
     if size < 0:
         raise ValueError('size must be >= 0')
 
+
 class Square:
     """
         A class to create a square
