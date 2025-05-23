@@ -4,11 +4,11 @@
 """
 
 
-def sizeError(size):
-    if not (isinstance(size, int)):
-        raise TypeError('size must be an integer')
-    if size < 0:
-        raise ValueError('size must be >= 0')
+def sizeError(value, field):
+    if not (isinstance(value, int)):
+        raise TypeError(f'{field} must be an integer')
+    if value < 0:
+        raise ValueError(f'{field} must be >= 0')
 
 
 class Rectangle():
@@ -33,10 +33,10 @@ class Rectangle():
 
     @width.setter
     def width(self, value):
-        sizeError(value)
+        sizeError(value, 'width')
         self.__width = value
 
     @height.setter
     def height(self, value):
-        sizeError(value)
+        sizeError(value, 'height')
         self.__height = value
