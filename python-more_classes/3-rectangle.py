@@ -57,6 +57,6 @@ class Rectangle():
 
         string = ''
         for _ in range(self.height):
-            string += f'{'#' * self.height}\n'
+            string += '#' * self.width + '\n'
 
-        return string
+        return string[:-1]
