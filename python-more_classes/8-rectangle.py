@@ -9,11 +9,6 @@ def sizeError(value, field):
         raise TypeError(f'{field} must be an integer')
     if value < 0:
         raise ValueError(f'{field} must be >= 0')
-    
-
-def rectError(value, field):
-    if not isinstance(Rectangle, value):
-        raise TypeError(f"{field} must be an instance of Rectangle")
 
 
 class Rectangle():
