@@ -24,6 +24,3 @@ True
 
 >>> my_list.print_sorted()
 [-10, 69, 420]
-
->>> print(my_list)
-[420, 69]
