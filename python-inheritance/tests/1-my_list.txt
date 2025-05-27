@@ -1,0 +1,19 @@
+>>> MyList = __import__('1-my_list').MyList
+
+>>> my_list = MyList()
+>>> isinstance(my_list, list)
+True
+
+>>> my_list = MyList([0, 1, 2])
+>>> my_list.print_sorted()
+[0, 1, 2]
+
+>>> my_list = MyList([])
+>>> my_list.print_sorted()
+[]
+
+>>> my_list = MyList()
+>>> my_list.append(420)
+>>> my_list.append(69)
+>>> my_list.print_sorted()
+[420, 69]
