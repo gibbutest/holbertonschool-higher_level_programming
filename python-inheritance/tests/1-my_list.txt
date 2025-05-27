@@ -18,8 +18,12 @@ True
 
 >>> my_list.append(420)
 >>> my_list.append(69)
+>>> my_list.append(-10)
+>>> print(my_list)
+[420, 69, -10]
+
 >>> my_list.print_sorted()
-[69, 420]
+[-10, 69, 420]
 
 >>> print(my_list)
 [420, 69]
