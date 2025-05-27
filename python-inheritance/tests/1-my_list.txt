@@ -7,13 +7,16 @@ True
 >>> my_list = MyList([0, 1, 2])
 >>> my_list.print_sorted()
 [0, 1, 2]
+[0, 1, 2]
 
 >>> my_list = MyList([])
 >>> my_list.print_sorted()
 []
+[]
 
 >>> my_list = MyList()
 >>> print(my_list)
+[]
 []
 
 >>> my_list.append(420)
@@ -21,6 +24,8 @@ True
 >>> my_list.append(-10)
 >>> print(my_list)
 [420, 69, -10]
+[420, 69, -10]
 
 >>> my_list.print_sorted()
+[-10, 69, 420]
 [-10, 69, 420]
