@@ -12,9 +12,9 @@ class CountedIterator():
     def __next__(self):
         if self.__counter >= len(self.data):
             raise StopIteration()
-
+        item = self.data[self.__counter]
         self.__counter += 1
-        return self.data[self.__counter]
+        return item
 
     def get_count(self):
         return self.__counter
