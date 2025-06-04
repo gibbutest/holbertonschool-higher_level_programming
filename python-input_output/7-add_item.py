@@ -11,7 +11,7 @@ new_list = list()
 
 try:
     new_list = load_from_json_file("add_item.json")
-except:
+except FileExistsError:
     pass
 
 new_list.extend(argv[1:])
