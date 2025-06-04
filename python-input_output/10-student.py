@@ -11,7 +11,7 @@ class Student():
         self.age = age
 
     def to_json(self, attrs=None):
-        if isinstance(attrs, list) and all(isinstance(attrs, str) for _ in attrs):
+        if isinstance(attrs, list) and all(isinstance(attr, str) for _ in attrs):
             result = {}
             for attr in attrs:
                 if hasattr(self, attr):
