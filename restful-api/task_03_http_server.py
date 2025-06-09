@@ -32,10 +32,10 @@ class MyServer(BaseHTTPRequestHandler):
 
 
 
-# server = HTTPServer(('', 8000), MyServer)
-# print('Starting server...')
+server = HTTPServer(('', 8000), MyServer)
+print('Starting server...')
 
-# server.serve_forever()
-# server.server_close()
+server.serve_forever()
+server.server_close()
 
-# print('Stopping server...')
+print('Stopping server...')
