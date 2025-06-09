@@ -33,5 +33,3 @@ def fetch_and_save_posts():
     except:
         return
     
-
-fetch_and_save_posts()
