@@ -5,9 +5,8 @@ from flask_jwt_extended import (JWTManager, create_access_token, jwt_required, g
 
 app = Flask(__name__)
 auth = HTTPBasicAuth()
-jwt = JWTManager(app)
-
 app.config['JWT_SECRET_KEY'] = 'hamburgercheeseburgerbigmacwhopper'
+jwt = JWTManager(app)
 
 users = {
     'user1': {
