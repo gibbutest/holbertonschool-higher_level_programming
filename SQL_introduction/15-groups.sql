@@ -3,6 +3,8 @@ SELECT
   score,
   COUNT(*) as number
 FROM
-  second_table GROUP_BY score
+  second_table
+GROUP BY
+  score
 ORDER BY
   score DESC;
