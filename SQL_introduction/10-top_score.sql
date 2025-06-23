@@ -5,4 +5,4 @@ SELECT
 FROM
   second_table
 ORDER BY
-  desc;
+  score DESC;
