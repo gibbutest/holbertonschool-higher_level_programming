@@ -8,6 +8,6 @@ FROM
 GROUP BY
   tv_genres.id
 HAVING
-  COUNT(tv_show_genres.show_id > 0)
+  number_of_shows > 0
 ORDER BY
   number_of_shows DESC;
