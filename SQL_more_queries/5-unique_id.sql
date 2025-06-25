@@ -1,3 +1,3 @@
 -- We're all unique!
 CREATE TABLE
-  IF NOT EXISTS unique_id (id int DEFAULT 1, name varchar(256), UNIQUE (id));
+  IF NOT EXISTS unique_id (id INT DEFAULT 1, name VARCHAR(256), UNIQUE (id));
