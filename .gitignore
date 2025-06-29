@@ -177,3 +177,4 @@ main.py
 *.txt
 *.json
 *.csv
+dump.sql
