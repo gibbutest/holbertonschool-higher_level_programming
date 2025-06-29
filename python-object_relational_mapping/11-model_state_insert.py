@@ -20,7 +20,4 @@ if __name__ == '__main__':
 
     state = session.query(State.id).where(State.name == 'Louisiana').first()
 
-    if state:
-        print(state[0])
-    else:
-        print("Not found")
+    print(state[0])
