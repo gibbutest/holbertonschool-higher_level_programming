@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+""" The module """
+
 import MySQLdb
 import sys
 
