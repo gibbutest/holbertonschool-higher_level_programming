@@ -4,7 +4,8 @@ const { argv } = process;
 const a = parseInt(argv[2]);
 const b = parseInt(argv[3]);
 
-function add(a, b) {
+// prettier-ignore
+function add (a, b) {
   console.log(a + b);
 }
 
