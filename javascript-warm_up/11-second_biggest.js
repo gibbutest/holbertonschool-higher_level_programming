@@ -5,10 +5,6 @@ const argv = process.argv.slice(2);
 if (!argv || argv.length === 1) {
   console.log(0);
 } else {
-  let big = 0;
-  argv.forEach((n) => {
-    const num = parseInt(n);
-    if (num > big) big = num;
-  });
-  console.log(big);
+  const nums = argv.map(Number).sort((a, b) => b - a);
+  console.log(nums[1]);
 }
