@@ -17,61 +17,47 @@ def about():
 def contact():
     return render_template('contact.html')
 
-@app.get('/items')
-def items():
-    with open('items.json', 'r') as f:
-        items = json.load(f)
-        return render_template('items.html', items=items)
-
 @app.get('/products')
-def products():
+def data():
     source = request.args.get('source')
     id = request.args.get('id')
+    data = []
 
     if source == 'json':
-        data = []
-        with open('products.json', 'r') as f:
-            data = json.load(f)
-        if id:
-            data = [row for row in data if row['id'] == int(id)]
-
-        return render_template('product_display.html', data='no product' if len(data) == 0 else data)
-
-    if source == 'csv':
-        data = []
-        with open('products.csv', mode='r', newline='') as f:
-            data = csv.DictReader(f)
-            data = [row for row in data]
-        if id:
-            data = [row for row in data if row['id'] == id]
-
-        return render_template('product_display.html', data='no product' if len(data) == 0 else data)
-    
-    if source == 'db':
-        data = []
         try:
-            with sqlite3.connect('products.db') as db:
-                cursor = db.cursor()
-
-                if id:
-                    cursor.execute('SELECT * FROM Products WHERE id=?', (id,))
-                else:
-                    cursor.execute('SELECT * FROM Products')
-
-                rows = cursor.fetchall()
-                for row in rows:
-                    data.append({
-                        "id": row[0],
-                        "name": row[1],
-                        "category": row[2],
-                        "price": row[3]
-                    })
-
-                return render_template('product_display.html', data='no product' if len(data) == 0 else data)
+            with open('products.json') as f:
+                data = json.load(f)
         except Exception as e:
-            render_template('product_display.html', data='error')
+            return f"Error loading JSON: {e}", 500
 
-    return render_template('product_display.html', data='error')
+    elif source == 'csv':
+        try:
+            with open('products.csv') as f:
+                reader = csv.DictReader(f)
+                data = list(reader)
+        except Exception as e:
+            return f"Error loading CSV: {e}", 500
+
+    elif source == 'sql':
+        try:
+            conn = sqlite3.connect("products.db")
+            conn.row_factory = sqlite3.Row
+            cursor = conn.cursor()
+            if id:
+                cursor.execute("SELECT * FROM Products WHERE id = ?", (id,))
+            else:
+                cursor.execute("SELECT * FROM Products")
+            data = cursor.fetchall()
+        except Exception as e:
+            return f"Error loading SQL: {e}", 500
+    else:
+        return "Wrong source"
+
+    if id and not data:
+        return "Product not found"
+
+    return render_template("product_display.html", products=data)
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)

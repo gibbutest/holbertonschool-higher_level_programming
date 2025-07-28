@@ -3,29 +3,20 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Product Page</title>
+		<title>Products</title>
 	</head>
 
 	<body>
-		{%if data == 'error'%}
-		<p>Wrong source</p>
-		{%elif data == 'no product'%}
-		<p>Product not found</p>
-		{%else%}
-		<table>
-			<tr>
-				<th>Name</th>
-				<th>Category</th>
-				<th>Price</th>
-			</tr>
-			{%for row in data%}
-			<tr>
-				<td>{{row.name}}</td>
-				<td>{{row.category}}</td>
-				<td>{{row.price}}</td>
-			</tr>
-			{%endfor%}
-		</table>
-		{%endif%}
+		{% if products %}
+		<ul>
+			{% for product in products %}
+			<li>{{ product["name"]}}</li>
+			<li>{{ product["category"] }}</li>
+			<li>{{ product["price"] }}</li>
+			{% endfor %}
+		</ul>
+		{% else %}
+		<p>No products found.</p>
+		{% endif %}
 	</body>
 </html>
