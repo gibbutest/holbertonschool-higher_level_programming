@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 import json
 import csv
+import sqlite3
 
 app = Flask(__name__)
 
@@ -45,6 +46,27 @@ def products():
             data = [row for row in data if row['id'] == id]
 
         return render_template('product_display.html', data='no product' if len(data) == 0 else data)
+    
+    if source == 'db':
+        data = []
+        with sqlite3.connect('products.db') as db:
+            cursor = db.cursor()
+
+            if id:
+                cursor.execute('SELECT * FROM Products WHERE id=?', (id,))
+            else:
+                cursor.execute('SELECT * FROM Products')
+
+            rows = cursor.fetchall()
+            for row in rows:
+                data.append({
+                    "id": row[0],
+                    "name": row[1],
+                    "category": row[2],
+                    "price": row[3]
+                })
+
+            return render_template('product_display.html', data='no product' if len(data) == 0 else data)
 
     return render_template('product_display.html', data='error')
 
